@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenDrop-AGPL</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 50px auto; text-align: center; }
+        .agpl-notice { margin-top: 50px; font-size: 0.8em; color: #666; border-top: 1px solid #ccc; padding-top: 10px; }
+        .source-link { color: #d32f2f; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>OpenDrop-AGPL</h1>
+    
+    <input type="file" id="fileInput">
+    <button onclick="upload()">アップロード</button>
+
+    <h3>ファイル一覧</h3>
+    <ul id="fileList"></ul>
+
+    <div class="agpl-notice">
+        <p>このシステムは <strong>GNU AGPL v3</strong> ライセンスの下で公開されています。</p>
+        <p>AGPLの規定に基づき、このサービスの全ソースコードは自由に取得可能です。</p>
+        <a href="/source-code" class="source-link">[ソースコード(ZIP)をダウンロード]</a>
+    </div>
+
+    <script>
+        async function loadFiles() {
+            const res = await fetch('/files');
+            const files = await res.json();
+            const list = document.getElementById('fileList');
+            list.innerHTML = files.map(f => `<li><a href="/download/${f}">${f}</a></li>`).join('');
+        }
+        async function upload() {
+            const file = document.getElementById('fileInput').files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+            await fetch('/upload', { method: 'POST', body: formData });
+            loadFiles();
+        }
+        loadFiles();
+    </script>
+</body>
+</html>
