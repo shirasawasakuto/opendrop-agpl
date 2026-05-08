@@ -40,5 +40,5 @@ opendrop-agpl/
 本システムを利用する全てのユーザーは、UI下部のリンク、または /source-code エンドポイントから、現在サーバーで実行されているソースコード一式をZIP形式で取得する権利を有します。  
 ## 貢献について
 透明性を高めるための改善、セキュリティパッチ、新機能の提案を歓迎します。全ての貢献は AGPL v3.0 の下で管理されます。  
-Copyright (C) 2026 Shirasawa Sakuto
+Copyright (C) 2026 Shirasawa Sakuto  
 OpenDrop-AGPL is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
